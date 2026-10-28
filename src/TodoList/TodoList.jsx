@@ -11,8 +11,6 @@ function TodoList() {
     { id: 3, title: "do homework", completed: true }
   ]);
 
-  const [newTaskTitle, setNewTaskTitle] = useState("");
-
   const handleAddTask = (title) => {
     const newTask = {
       id: Date.now(),
@@ -21,6 +19,14 @@ function TodoList() {
     };
     
     setTasks([...tasks, newTask]);
+  };
+
+  const handleToggleTask = (id) => {
+    setTasks(
+      tasks.map((task) => 
+        task.id === id ? { ...task, completed: true } : task
+      )
+    );
   };
 
  return (
@@ -33,8 +39,10 @@ function TodoList() {
         {tasks.map((task) => (
           <TodoItem 
             key={task.id} 
+            id={task.id}
             title={task.title} 
             completed={task.completed} 
+            onToggleTask={handleToggleTask}
           />
         ))}
       </ul>
