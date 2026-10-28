@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TodoItem from '../TodoItem/TodoItem';
 
 function TodoList() {
   // אתחול מערך המשימות עם לפחות 3 משימות ואובייקטים המכילים id, title, completed
@@ -8,14 +9,16 @@ function TodoList() {
     { id: 3, title: "do homework", completed: true }
   ]);
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
+ return (
+    <div style={{ padding: '20px', fontFamily: 'Arial', maxWidth: '400px', margin: '0 auto' }}>
       <h2>רשימת משימות</h2>
-      <ul>
+      <ul style={{ padding: 0 }}>
         {tasks.map((task) => (
-          <li key={task.id}>
-            {task.title}
-          </li>
+          <TodoItem 
+            key={task.id} 
+            title={task.title} 
+            completed={task.completed} 
+          />
         ))}
       </ul>
     </div>

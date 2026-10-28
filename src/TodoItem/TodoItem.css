@@ -1,0 +1,9 @@
+.todo-item {
+  background-color: #ed848d; 
+  border: 1px solid black;
+  list-style-type: none;
+}
+
+.todo-item.completed {
+  background-color: #4ce16f; 
+}
