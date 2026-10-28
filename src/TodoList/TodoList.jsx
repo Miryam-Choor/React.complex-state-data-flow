@@ -29,6 +29,10 @@ function TodoList() {
     );
   };
 
+  const handleDeleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
  return (
    <div className="todo-container">
       <h2>רשימת משימות</h2>
@@ -43,6 +47,7 @@ function TodoList() {
             title={task.title} 
             completed={task.completed} 
             onToggleTask={handleToggleTask}
+            onDeleteTask={handleDeleteTask}
           />
         ))}
       </ul>
