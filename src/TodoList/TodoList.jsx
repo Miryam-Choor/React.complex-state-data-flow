@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TodoItem from '../TodoItem/TodoItem';
+import TodoForm from '../TodoForm/TodoForm'
 import './TodoList.css';
 
 
@@ -12,42 +13,30 @@ function TodoList() {
 
   const [newTaskTitle, setNewTaskTitle] = useState("");
 
-  const addTask = (t) => {
-    t.preventDefault(); 
-
-    if (newTaskTitle.trim() === "") 
-        return;
-
+  const handleAddTask = (title) => {
     const newTask = {
       id: Date.now(),
-      title: newTaskTitle,
+      title: title,
       completed: false
     };
-
+    
     setTasks([...tasks, newTask]);
-
-    setNewTaskTitle("");
   };
 
  return (
-    <div className="todo-container">
-      <h2 className="todo-title">רשימת משימות</h2>
+   <div className="todo-container">
+      <h2>רשימת משימות</h2>
 
-      <form onSubmit={addTask} className="todo-form">
-          <input type="text" placeholder="enter a new task..." value={newTaskTitle} 
-          onChange={(e) => setNewTaskTitle(e.target.value)} className="todo-input"
-          />
-          <button type="submit" className="todo-button">enter</button>
-      </form>
+      <TodoForm onAddTask={handleAddTask} />
 
       <ul className="todo-list">
-          {tasks.map((task) => (
+        {tasks.map((task) => (
           <TodoItem 
-              key={task.id} 
-              title={task.title} 
-              completed={task.completed} 
+            key={task.id} 
+            title={task.title} 
+            completed={task.completed} 
           />
-          ))}
+        ))}
       </ul>
     </div>
   );
