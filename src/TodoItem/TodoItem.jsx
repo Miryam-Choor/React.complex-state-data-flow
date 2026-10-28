@@ -6,7 +6,7 @@ function TodoItem({ title, completed }) {
     <li className={`todo-item ${completed ? 'completed' : ''}`}>
       <span>{title}</span>
       <span className="todo-status">
-        {completed ? 'executed' : 'not executed'}
+        {completed ? ' - executed' : ' - not executed'}
       </span>
     </li>
   );
